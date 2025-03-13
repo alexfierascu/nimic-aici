@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smiley Referral Code Interaction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f5f5f5;
+        }
+        
+        .container {
+            text-align: center;
+            position: relative;
+            padding: 20px;
+        }
+        
+        h1 {
+            margin-bottom: 50px;
+            color: #333;
+        }
+        
+        .dot-container {
+            position: relative;
+            margin: 30px auto;
+            width: 200px;
+            height: 200px;
+        }
+        
+        .blue-dot {
+            width: 20px;
+            height: 20px;
+            background-color: #3498db;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+        }
+        
+        .pointer {
+            position: absolute;
+            top: 20%;
+            left: 70%;
+            transform: rotate(225deg);
+            font-size: 40px;
+            color: #333;
+        }
+        
+        .smiley {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-80%, -30%);
+            opacity: 0;
+            transition: opacity 0.5s ease-in;
+            z-index: 2;
+        }
+        
+        .licking-tongue {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            background-color: #ff7979;
+            border-radius: 50% 50% 0 50%;
+            top: 52%;
+            left: 47%;
+            animation: lick 0.8s infinite;
+            opacity: 0;
+        }
+        
+        @keyframes lick {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Put your finger here to get the referral code</h1>
+        <div class="dot-container">
+            <div class="blue-dot"></div>
+            <div class="pointer">👆</div>
+            <div class="smiley">
+                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Smiley face -->
+                    <circle cx="50" cy="50" r="45" fill="#FFD700"/>
+                    <!-- Eyes -->
+                    <circle cx="35" cy="40" r="7" fill="#333"/>
+                    <circle cx="65" cy="40" r="7" fill="#333"/>
+                    <!-- Smile -->
+                    <path d="M30,65 Q50,85 70,65" stroke="#333" stroke-width="5" fill="none"/>
+                </svg>
+            </div>
+            <div class="licking-tongue"></div>
+        </div>
+    </div>
+
+    <script>
+        // Wait 3 seconds, then show the cat
+        setTimeout(() => {
+            const smiley = document.querySelector('.smiley');
+            const tongue = document.querySelector('.licking-tongue');
+            const pointer = document.querySelector('.pointer');
+            const heading = document.querySelector('h1');
+            
+            // Show smiley and tongue
+            smiley.style.opacity = 1;
+            tongue.style.opacity = 1;
+            
+            // Make smiley appear to be focused on the dot
+            smiley.style.transform = 'translate(-80%, -30%)';
+            
+            // Hide the pointer
+            pointer.style.opacity = 0;
+            
+            // Change the text
+            heading.textContent = "Chiar credeai ca se intampla ceva?";
+        }, 3000);
+    </script>
+</body>
+</html>
